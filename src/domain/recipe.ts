@@ -4,8 +4,6 @@ export class Recipe {
   _description!: string;
 
   constructor(aName: string, aDes: string) {
-    console.log(aName);
-    console.log(aDes);
     this.name = aName;
     this.description=aDes;
   }

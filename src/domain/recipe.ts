@@ -2,10 +2,12 @@ export class Recipe {
   _name!: string;
   _category?: string;
   _description!: string;
+  _prepTime!: number;
 
-  constructor(aName: string, aDes: string) {
+  constructor(aName: string, aDes: string, aPrep: number) {
     this.name = aName;
     this.description=aDes;
+    this.prepTime=aPrep;
   }
 
   get name(): string {
@@ -36,7 +38,15 @@ export class Recipe {
     this._description = aDescription;
   }
 
+   get prepTime(): number {
+    return this._prepTime;
+  }
+
+  set prepTime(aPrepTime: number) {
+    this._prepTime = aPrepTime;
+  }
+
   toString(): string {
-    return `Receta: ${this.name} - categoría: ${this.category} - descripcion: ${this.description}`;
+    return `Receta: ${this.name} - categoría: ${this.category} - descripcion: ${this.description} - tiempo: ${this.prepTime}`;
   }
 }

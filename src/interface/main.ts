@@ -11,19 +11,22 @@ const inpCategory = document.getElementById(
 const inpDes = document.getElementById(
   "inp-descripcion",
 ) as HTMLInputElement | null;
+const inpPrepTime = document.getElementById(
+  "inp-prepTime",
+) as HTMLInputElement | null;
 
 
 const mainRecipeList = new RecipeList();
 
-if (btnAdd && inpName && inpCategory && inpDes) {
+if (btnAdd && inpName && inpCategory && inpDes && inpPrepTime) {
   btnAdd.addEventListener("click", () => {
     const recipesErrorContainer = document.getElementById("add-recipes-error");
     const recipesError = document.getElementById("add-recipes-error-msg");
     try {
-      const newRecipe = new Recipe(inpName.value, inpDes.value);
+      const newRecipe = new Recipe(inpName.value, inpDes.value, inpPrepTime.valueAsNumber);
       newRecipe.category = inpCategory.value;
       mainRecipeList.add(newRecipe);
-      clearInputs(inpName, inpCategory, inpDes);
+      clearInputs(inpName, inpCategory, inpDes, inpPrepTime);
       recipesErrorContainer?.classList.add("d-none");
       loadRecipeList(newRecipe);
       appendAlert(`${newRecipe.name} agregada correctamente!`, "success");
@@ -44,10 +47,12 @@ function clearInputs(
   inpNameEl: HTMLInputElement,
   inpCategoryEl: HTMLSelectElement,
   inpDesEl:HTMLInputElement,
+  inpPrepTimeEl:HTMLInputElement,
 ) {
   inpNameEl.value = "";
   inpCategoryEl.selectedIndex = 0;
   inpDesEl.value="";
+  inpPrepTimeEl.valueAsNumber=0;
 }
 
 function loadRecipeList(newRecipe: Recipe) {

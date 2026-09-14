@@ -3,8 +3,9 @@ export class Recipe {
   _category?: string;
   _description!: string;
 
-  constructor(aName: string) {
+  constructor(aName: string, aDes: string) {
     this.name = aName;
+    this.description=aDes;
   }
 
   get name(): string {

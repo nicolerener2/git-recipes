@@ -9,7 +9,7 @@ const inpCategory = document.getElementById(
   "inp-category",
 ) as HTMLSelectElement | null;
 const inpDes = document.getElementById(
-  "inp-description",
+  "inp-descripcion",
 ) as HTMLInputElement | null;
 
 
